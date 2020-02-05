@@ -1,6 +1,6 @@
 FROM resin/rpi-raspbian:jessie as builder
 
-ARG OLAVERSION=0.10.6
+ARG OLAVERSION=0.10.7
 ARG configflags
 
 RUN apt-get update \
@@ -40,7 +40,7 @@ RUN cd /tmp \
 RUN find /tmp -name "*.deb"
 
 FROM resin/rpi-raspbian:jessie as runtime
-ARG OLAVERSION=0.10.6
+ARG OLAVERSION=0.10.7
 COPY --from=builder /tmp/*.deb /tmp/
 RUN apt-get update \
  && apt-get upgrade -y \
@@ -57,7 +57,7 @@ ADD ola-conf.tar /etc/olad/
 COPY ola_conf_plugins.sh /usr/bin/
 
 FROM scratch
-ARG OLAVERSION=0.10.6
+ARG OLAVERSION=0.10.7
 LABEL org.label-schema.schema-version="1.0" \
       org.label-schema.name="openlighting" \
       org.label-schema.description="OpenLightingProject OLA" \
