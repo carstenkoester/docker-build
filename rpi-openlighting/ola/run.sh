@@ -15,4 +15,5 @@ docker run \
   --net=host \
   -v ${HOME}/ola/config:/etc/olad \
   --restart unless-stopped \
+  --name olad \
   olad:latest
