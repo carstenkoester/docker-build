@@ -68,6 +68,8 @@ LABEL org.label-schema.schema-version="1.0" \
       com.tobyjennings.architecture="arm7"
 
 COPY --from=runtime / /
+COPY entrypoint.sh /
+
 EXPOSE 9090 9010
 VOLUME /etc/olad
-ENTRYPOINT ["olad","-l","3","-c","/etc/olad","-i","0.0.0.0"]
+ENTRYPOINT ["/entrypoint.sh"]
